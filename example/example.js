@@ -7,7 +7,7 @@ const Example = () => (
   <div>
     <ValidForm>
       <Field name="test" label="test"/>
-    <button type="submit">submit</button>
+    <button type="submit">Submit</button>
     </ValidForm>
   </div>
 );

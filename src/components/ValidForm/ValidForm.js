@@ -66,10 +66,13 @@ export default class ValidForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit.bind(this)}
-        className="ui form">
+        className="essential-form">
         {this.props.children}
         <p>
           {JSON.stringify(this.state.payload)}
+        </p>
+        <p>
+          {`Form is: ${this.state.valid ? 'valid': 'invalid'}`}
         </p>
       </form>
     );

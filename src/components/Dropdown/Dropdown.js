@@ -83,13 +83,13 @@ export default class Dropdown extends Component {
 
     return (
 
-      <div className={`select-box field ${submitted && !valid && 'errors'}`}>
+      <div className={`essential-select ${submitted && !valid && 'errors'}`}>
         {label && <label>{label}</label>}
 
         <select tabIndex="0"
                 value={this.state.value}
                 onChange={this.handleChange.bind(this)}
-                className={`ui dropdown ${placeholder && !touched && 'placeholder'}`}
+                className={`${placeholder && !touched && 'placeholder'}`}
                 name={name} id={name}>
 
           {!touched && placeholder && <option value="">{placeholder}</option>}
@@ -97,9 +97,9 @@ export default class Dropdown extends Component {
 
         </select>
         <div className="icons">
-          { submitted && !valid && <i className="red remove icon"></i> }
-          { required && valid && <i className="green checkmark icon"></i> }
-          { (!required && !validator) && <i className="blue dropdown icon"></i> }
+          { submitted && !valid && <i className="red icon"></i> }
+          { required && valid && <i className="green icon"></i> }
+          { (!required && !validator) && <i className="blue icon"></i> }
         </div>
       </div>
     );

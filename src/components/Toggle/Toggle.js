@@ -73,8 +73,8 @@ export default class Toggle extends Component {
     return (
       <div
         onClick={this.handleToggle.bind(this)}
-        className={`inline field ${(submitted && !valid) ? 'error' : ''}`}>
-        <div className={`ui toggle checkbox ${value && 'checked'}`}>
+        className={`essential-toggle ${(submitted && !valid) ? 'error' : ''}`}>
+        <div className={`checkbox ${value && 'checked'}`}>
           <input checked={value} value={value} name={name} id={name} type="checkbox" tabIndex="0" className="hidden"/>
           {(label || children) && <label>{label || children}</label>}
         </div>

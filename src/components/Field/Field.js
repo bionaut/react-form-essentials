@@ -89,25 +89,24 @@ export default class Field extends Component {
 
     if (this.approve()) {
       return (
-        <div className="field">
+        <div className="essential-field">
           {label && <label>{label}</label>}
-          <div className={`ui icon input ${ ((errors && errors[name]) || (submitted && !valid)) && 'error'}`}>
+          <div className={`essential-input-group ${ ((errors && errors[name]) || (submitted && !valid)) && 'error'}`}>
             <input
               name={name}
               id={name}
-              className="field-component"
               type={type}
               value={value}
               onChange={this.handleChange.bind(this)}
               placeholder={placeholder}
             />
-            { submitted && !valid && <i className="red remove icon"></i> }
-            { (validator || required) && valid && <i className="green checkmark icon"></i> }
-            { !required && !validator && <i className="blue info icon"></i> }
+            { submitted && !valid && <i className="red icon"></i> }
+            { (validator || required) && valid && <i className="green icon"></i> }
+            { !required && !validator && <i className="blue icon"></i> }
           </div>
           { errors && errors[name] &&
           <span>
-            <i className="orange warning icon"></i>
+            <i className="orange icon"></i>
             <span className="secondary-error">{errors[name]}</span>
           </span>}
         </div>
