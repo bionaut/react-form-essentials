@@ -63,17 +63,30 @@ export default class ValidForm extends Component {
   }
 
   render() {
+
+    const {debug, children} = this.props;
+    const {payload, valid, submitted} = this.state;
+
     return (
       <form
         onSubmit={this.handleSubmit.bind(this)}
         className="essential-form">
-        {this.props.children}
-        <p>
-          {JSON.stringify(this.state.payload)}
-        </p>
-        <p>
-          {`Form is: ${this.state.valid ? 'valid': 'invalid'}`}
-        </p>
+
+        {children}
+
+        { debug &&
+        <div className="essential-form-debug">
+          <p>
+            {JSON.stringify(payload)}
+          </p>
+          <p>
+            {`Form is: ${valid ? 'valid' : 'invalid'}`}
+          </p>
+          <p>
+            {`Submit button was ${submitted ? 'pressed' : 'not pressed'}.`}
+          </p>
+        </div>}
+
       </form>
     );
   }
