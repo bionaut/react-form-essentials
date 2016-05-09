@@ -8,6 +8,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel'
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
       }
     ]
   },

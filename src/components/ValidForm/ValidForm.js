@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import './ValidForm.styl';
 
 export default class ValidForm extends Component {
   constructor(props) {
