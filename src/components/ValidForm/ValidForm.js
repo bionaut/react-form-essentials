@@ -76,7 +76,7 @@ export default class ValidForm extends Component {
         {children}
 
         { debug &&
-        <div className="essential-form-debug">
+        <div className={`essential-form-debug ${valid ? 'valid' : ''}`}>
           <p>
             {JSON.stringify(payload)}
           </p>

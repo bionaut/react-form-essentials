@@ -8,6 +8,10 @@ export default function (validators, value) {
 
   function mapper(proces) {
     switch (proces) {
+      case 'isDivisibleBy':
+        return validator.isDivisibleBy(value, queue[proces][0]);
+      case 'contains':
+        return validator.contains(value, queue[proces][0]);
       case 'isLength':
         const options = queue[proces][1]
           ? { min: queue[proces][0],
