@@ -1,11 +1,18 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {ValidForm, Field} from '../src/index';
+import {ValidForm, Field, Toggle, Dropdown} from '../src/index';
 
 const dummyHandler = function (payload) {
   alert(JSON.stringify(payload))
 };
+
+const demoOptions = [
+  {value: '1', label: 'One'},
+  {value: '2', label: 'Two'},
+  {value: '3', label: 'Three'}
+];
+
 
 const Example = () => (
   <div>
@@ -13,6 +20,7 @@ const Example = () => (
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field required={true} validator="isLength:1:5|isAlpha|contains:test" name="ultimateValidation" label="Is 1-5 letters only, must contain 'test'"/>
+      <Toggle required={true} name="toggle" label="This has to be checked as well"/>
       <button type="submit">Submit</button>
     </ValidForm>
 
@@ -21,6 +29,7 @@ const Example = () => (
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field name="optionalField" label="Optional Field"/>
       <Field required={true} name="requiredField" label="Required Field"/>
+      <Dropdown required={true} placeholder="Choose Number" label="choose" name="dropdown" options={demoOptions}/>
       <button type="submit">Submit</button>
     </ValidForm>
 
@@ -58,7 +67,7 @@ const Example = () => (
     <hr/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
-      <Field required={true} validator="isDivisibleBy:2" name="notPrime" label="Must be an even number"/>
+      <Field required={true} validator="isDivisibleBy:2" name="evenNumber" label="Must be an even number"/>
       <button type="submit">Submit</button>
     </ValidForm>
 
