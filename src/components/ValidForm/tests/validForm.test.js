@@ -14,7 +14,7 @@ describe('ValidForm Component', () => {
       <ValidForm />
     );
 
-    expect(wrapper).to.have.className('form');
+    expect(wrapper).to.have.className('essential-form');
     expect(wrapper).to.have.state('valid').to.equal(false);
     expect(wrapper).to.have.state('payload').to.deep.equal({});
     expect(wrapper).to.have.state('submitted').to.equal(false);

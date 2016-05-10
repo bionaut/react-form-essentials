@@ -83,7 +83,7 @@ export default class Dropdown extends Component {
 
     return (
 
-      <div className={`essential-select ${submitted && !valid && 'errors'}`}>
+      <div className={`essential-select ${(submitted && !valid) ? 'errors' : ''}`}>
         {label && <label>{label}</label>}
 
         <select tabIndex="0"

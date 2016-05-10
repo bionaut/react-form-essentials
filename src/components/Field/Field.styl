@@ -1,12 +1,27 @@
-.field
-  .ui.input
-    input.field-component
-      line-height inputHeight
-      border-radius 0
-      &:focus
-        border-radius 0
+.essential-field
+  position relative
+  width 100%
+  .essential-input-group
+    position relative
+    input
+      width 100%
+      height fieldHeight
+      line-height fieldHeight
     &.error
       input
         outline 1px solid red
+  .essential-icon
+    position absolute
+    right 0
+    top 0
+    height fieldHeight
+    width fieldHeight
+    &.red
+      background-color red
+    &.green
+      background-color green
+    &.blue
+      background-color blue
+
   .secondary-error
     color red

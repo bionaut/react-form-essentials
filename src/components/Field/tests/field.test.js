@@ -21,8 +21,8 @@ describe('Field component', () => {
         }
       });
 
-    expect(wrapper).to.have.className('field');
-    expect(wrapper).to.have.descendants('.ui.icon.input');
+    expect(wrapper).to.have.className('essential-field');
+    expect(wrapper).to.have.descendants('.essential-input-group');
     expect(wrapper).to.have.descendants('input');
     expect(wrapper.find('label')).to.have.text('Name');
     expect(wrapper.find('input')).to.have.attr('id').equal('testField');
@@ -35,7 +35,7 @@ describe('Field component', () => {
     const wrapper = shallow(
       <Field name="optional"/>);
     expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('blue info icon');
+    expect(wrapper.find('i')).to.have.className('blue');
 
   });
 
@@ -50,7 +50,7 @@ describe('Field component', () => {
         }
       });
     expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('remove');
+    expect(wrapper.find('i')).to.have.className('red');
 
   });
 
@@ -66,7 +66,7 @@ describe('Field component', () => {
         }
       });
     expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('checkmark');
+    expect(wrapper.find('i')).to.have.className('green');
 
   });
 

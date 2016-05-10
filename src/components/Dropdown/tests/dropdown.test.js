@@ -21,7 +21,7 @@ describe('Dropdown', () => {
       }
     );
 
-    expect(wrapper).to.have.className('select-box');
+    expect(wrapper).to.have.className('essential-select');
     expect(wrapper).to.have.descendants('select');
 
   });
@@ -42,7 +42,7 @@ describe('Dropdown', () => {
       }
     );
 
-    expect(wrapper.find('i')).to.have.className('remove');
+    expect(wrapper.find('i')).to.have.className('red');
 
   });
 
@@ -64,7 +64,7 @@ describe('Dropdown', () => {
     );
 
     expect(wrapper.find('select')).to.have.value('1');
-    expect(wrapper.find('i')).to.have.className('checkmark');
+    expect(wrapper.find('i')).to.have.className('green');
 
   });
 
@@ -87,7 +87,7 @@ describe('Dropdown', () => {
     );
 
     expect(wrapper.find('select')).to.have.value('2');
-    expect(wrapper.find('i')).to.have.className('remove');
+    expect(wrapper.find('i')).to.have.className('red');
 
   })
 });

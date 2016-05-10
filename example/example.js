@@ -10,8 +10,9 @@ const dummyHandler = function (payload) {
 const Example = () => (
   <div>
     <ValidForm debug={true} onSubmit={dummyHandler}>
-      <Field name="test" label="test"/>
-    <button type="submit">Submit</button>
+      <Field name="optionalField" label="Optional Field"/>
+      <Field required={true} name="requiredField" label="Required Field"/>
+      <button type="submit">Submit</button>
     </ValidForm>
   </div>
 );

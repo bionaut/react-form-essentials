@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "mocha .scripts/mocha_boot.js src/**/tests/**/*.js --compilers js:babel-core/register",
+    "test": "mocha .scripts/mocha_boot.js src/**/tests/**/*.js --require babelhook --require css-null-compiler",
     "test-watch": "npm run test -- --watch --watch-extensions js"
   },
   "keywords": [
@@ -30,7 +30,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.0.0",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "mocha-stylus-compiler": "^1.0.1"
   },
   "dependencies": {
     "react": "^15.0.2",

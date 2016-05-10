@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import './ValidForm.styl';
+import '../../index.styl';
 
 export default class ValidForm extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class ValidForm extends Component {
     let inValid;
 
     for (let val in payload) {
-      if (!payload[val]) inValid = true;
+      if (!payload[val] && payload[val] !== '') inValid = true;
     }
 
     this.setState({
