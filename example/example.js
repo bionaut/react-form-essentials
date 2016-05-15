@@ -17,6 +17,25 @@ const demoOptions = [
 const Example = () => (
   <div>
 
+    <h1><u>Form</u> syntax.</h1>
+  
+    <pre>
+      {
+        `<ValidForm debug={true} onSubmit={dummyHandler}>
+        <!--children here-->
+</ValidForm>`
+      }
+    </pre>
+
+    <ul>
+      <li><b>debug:</b> will provide form feedback</li>
+      <li><b>onSubmit:</b> is a submit handler (use from outside container)</li>
+    </ul>
+
+    <hr/>
+    <br/>
+    <br/>
+    <br/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field required={true} validator="isLength:1:5|isAlpha|contains:test" name="ultimateValidation" label="Is 1-5 letters only, must contain 'test'"/>
@@ -25,6 +44,9 @@ const Example = () => (
     </ValidForm>
 
     <hr/>
+    <br/>
+    <br/>
+    <br/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field name="optionalField" label="Optional Field"/>
@@ -34,6 +56,9 @@ const Example = () => (
     </ValidForm>
 
     <hr/>
+    <br/>
+    <br/>
+    <br/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field validator="isAlpha" required={true} name="username" label="Required UserName (letters only - isAlpha)"/>
@@ -43,6 +68,9 @@ const Example = () => (
     </ValidForm>
 
     <hr/>
+    <br/>
+    <br/>
+    <br/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field required={true} validator="isLength:5" name="atLeast5" label="Longer than 5 (isLength:5)"/>
