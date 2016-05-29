@@ -78,7 +78,8 @@ export default class Dropdown extends Component {
       required,
       validator,
       name,
-      icons=true
+      icons=true,
+      defaultError
     } = this.props;
 
     const {
@@ -97,6 +98,7 @@ export default class Dropdown extends Component {
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
           id={name}
+          errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
           name={name}>
 
           {this.generateOptions()}

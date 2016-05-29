@@ -83,7 +83,8 @@ export default class Field extends Component {
       required,
       validator,
       name='untitled',
-      icons=true
+      icons=true,
+      defaultError
     } = this.props;
 
     const {
@@ -101,7 +102,7 @@ export default class Field extends Component {
               underlineStyle={getInputStyles(submitted, errors, name, valid)}
               underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
               style={getInputStyles(submitted, errors, name, valid)}
-              errorText={errors && errors[name]}
+              errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
               name={name}
               id={name}
               type={type}

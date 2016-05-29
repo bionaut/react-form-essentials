@@ -85,8 +85,9 @@ const Example = () => (
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field name="optionalField" label="Optional Field"/>
-      <Field required={true} name="requiredField" label="Required Field"/>
-      <Dropdown required={true} placeholder="Choose Number" label="choose" name="dropdown" options={demoOptions}/>
+      <Field defaultError="This field is required!" required={true} name="requiredField" label="Required Field"/>
+      <Dropdown defaultError="This field is required!" required={true} placeholder="Choose Number" label="choose" name="dropdown" options={demoOptions}/>
+      <br/>
       <RaisedButton type="submit">Submit</RaisedButton>
     </ValidForm>
 
