@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
 
+import Icon from '../Icon/Icon';
+
 export default class Field extends Component {
   constructor(props) {
     super(props);
@@ -100,9 +102,9 @@ export default class Field extends Component {
               onChange={this.handleChange.bind(this)}
               placeholder={placeholder}
             />
-            { submitted && !valid && <i className="red essential-icon"></i> }
-            { (validator || required) && valid && <i className="green essential-icon"></i> }
-            { !required && !validator && <i className="blue essential-icon"></i> }
+            { submitted && !valid && <Icon className="red" type="error"/> }
+            { (validator || required) && valid && <Icon className="green" type="check"/> }
+            { !required && !validator && <Icon className="blue"/> }
           </div>
           { errors && errors[name] &&
           <span>

@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
 
+import Icon from '../Icon/Icon';
+
 export default class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -97,9 +99,9 @@ export default class Dropdown extends Component {
 
         </select>
         <div className="icons">
-          { submitted && !valid && <i className="red icon"></i> }
-          { required && valid && <i className="green icon"></i> }
-          { (!required && !validator) && <i className="blue icon"></i> }
+          { submitted && !valid && <Icon className="red" type="error"/> }
+          { required && valid && <Icon className="green" type="check"/> }
+          { (!required && !validator) && <Icon className="blue"/> }
         </div>
       </div>
     );
