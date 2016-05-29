@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import TextField from 'material-ui/TextField';
 import useValidator from '../../utils/useValidator';
 
 import Icon from '../Icon/Icon';
@@ -47,6 +48,14 @@ export default class Field extends Component {
     this.update(valid);
   }
 
+  getUnderlineStyles(submitted, errors, name, valid){
+    if ((errors && errors[name]) || (submitted && !valid)){
+      return {
+        borderColor: 'red'
+      }
+    }
+  }
+
   validate(newValue = this.state.value) {
     let valid;
 
@@ -93,14 +102,18 @@ export default class Field extends Component {
       return (
         <div className="essential-field">
           {label && <label>{label}</label>}
-          <div className={`essential-input-group ${ ((errors && errors[name]) || (submitted && !valid)) && 'error'}`}>
-            <input
+          <div className={`essential-input-group`}>
+            <TextField
+              underlineStyle={this.getUnderlineStyles(submitted, errors, name, valid)}
+              underlineFocusStyle={this.getUnderlineStyles(submitted, errors, name, valid)}
+              style={inputStyle}
+              errorText={errors && errors[name]}
               name={name}
               id={name}
               type={type}
               value={value}
               onChange={this.handleChange.bind(this)}
-              placeholder={placeholder}
+              hintText={placeholder}
             />
             { submitted && !valid && <Icon type="error"/> }
             { (validator || required) && valid && <Icon type="check"/> }

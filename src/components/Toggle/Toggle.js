@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
+import Checkbox from 'material-ui/Checkbox';
 
 export default class Toggle extends Component {
   constructor(props) {
@@ -75,8 +76,7 @@ export default class Toggle extends Component {
         onClick={this.handleToggle.bind(this)}
         className={`essential-toggle ${(submitted && !valid) ? 'error' : ''}`}>
         <div className={`checkbox ${value && 'checked'}`}>
-          <input checked={value} value={value} name={name} id={name} type="checkbox" tabIndex="0" className="hidden"/>
-          {(label || children) && <label>{label || children}</label>}
+          <Checkbox label={label} checked={value ? true:false} value={value ? 'true':'false'} name={name} id={name}/>
         </div>
       </div>
     );

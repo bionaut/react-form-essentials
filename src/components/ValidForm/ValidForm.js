@@ -1,4 +1,7 @@
 import React, {Component, PropTypes} from 'react';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../../index.styl';
 
 export default class ValidForm extends Component {
@@ -69,26 +72,28 @@ export default class ValidForm extends Component {
     const {payload, valid, submitted} = this.state;
 
     return (
-      <form
-        onSubmit={this.handleSubmit.bind(this)}
-        className="essential-form">
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <form
+          onSubmit={this.handleSubmit.bind(this)}
+          className="essential-form">
 
-        {children}
+          {children}
 
-        { debug &&
-        <div className={`essential-form-debug ${valid ? 'valid' : ''}`}>
-          <p>
-            {JSON.stringify(payload)}
-          </p>
-          <p>
-            {`Form is: ${valid ? 'valid' : 'invalid'}`}
-          </p>
-          <p>
-            {`Submit button was ${submitted ? 'pressed' : 'not pressed'}.`}
-          </p>
-        </div>}
+          { debug &&
+          <div className={`essential-form-debug ${valid ? 'valid' : ''}`}>
+            <p>
+              {JSON.stringify(payload)}
+            </p>
+            <p>
+              {`Form is: ${valid ? 'valid' : 'invalid'}`}
+            </p>
+            <p>
+              {`Submit button was ${submitted ? 'pressed' : 'not pressed'}.`}
+            </p>
+          </div>}
 
-      </form>
+        </form>
+      </MuiThemeProvider>
     );
   }
 }
