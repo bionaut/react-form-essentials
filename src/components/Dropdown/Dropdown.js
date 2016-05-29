@@ -77,7 +77,8 @@ export default class Dropdown extends Component {
       placeholder,
       required,
       validator,
-      name
+      name,
+      icons=true
     } = this.props;
 
     const {
@@ -101,11 +102,11 @@ export default class Dropdown extends Component {
           {this.generateOptions()}
 
         </SelectField>
-        <div className="icons">
+        {icons && <div className="icons">
           { submitted && !valid && <Icon type="error"/> }
           { required && valid && <Icon type="check"/> }
           { (!required && !validator) && <Icon type="optional"/> }
-        </div>
+        </div>}
       </div>
     );
   }

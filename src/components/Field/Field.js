@@ -82,7 +82,8 @@ export default class Field extends Component {
       type='text',
       required,
       validator,
-      name='untitled'
+      name='untitled',
+      icons=true
     } = this.props;
 
     const {
@@ -108,11 +109,11 @@ export default class Field extends Component {
               onChange={this.handleChange.bind(this)}
               hintText={placeholder}
             />
-            <div className="icons">
+            {icons && <div className="icons">
               { submitted && !valid && <Icon type="error"/> }
               { (validator || required) && valid && <Icon type="check"/> }
               { !required && !validator && <Icon type="optional"/> }
-            </div>
+            </div>}
           </div>
         </div>
       );
