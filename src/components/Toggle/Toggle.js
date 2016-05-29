@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
 import Checkbox from 'material-ui/Checkbox';
 
+import getStyles from '../common/styles';
+
 export default class Toggle extends Component {
   constructor(props) {
     super(props);
@@ -57,12 +59,11 @@ export default class Toggle extends Component {
   render() {
 
     const {
-      submitted
+      submitted, errors
     } =this.context;
 
     const {
       label,
-      children,
       name
     } = this.props;
 
@@ -76,7 +77,13 @@ export default class Toggle extends Component {
         onClick={this.handleToggle.bind(this)}
         className={`essential-toggle ${(submitted && !valid) ? 'error' : ''}`}>
         <div className={`checkbox ${value && 'checked'}`}>
-          <Checkbox label={label} checked={value ? true:false} value={value ? 'true':'false'} name={name} id={name}/>
+          <Checkbox
+            label={label}
+            checked={value ? true:false}
+            value={value ? 'true':'false'}
+            labelStyle={getStyles(submitted, errors, name, valid)}
+            name={name}
+            id={name}/>
         </div>
       </div>
     );

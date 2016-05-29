@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
 
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 import Icon from '../Icon/Icon';
 
 export default class Dropdown extends Component {
@@ -22,13 +25,12 @@ export default class Dropdown extends Component {
     updatePayload(name, value);
   }
 
-  handleChange(ev) {
-    const newValue = ev.target.value;
+  handleChange(event, index, value) {
     this.setState({
-      value: newValue,
+      value: value,
       touched: true
     });
-    const valid = this.validate(newValue);
+    const valid = this.validate(value);
     this.update(valid);
   }
 
@@ -56,10 +58,10 @@ export default class Dropdown extends Component {
     const {options} = this.props;
     return options
       .map(({value, label}, i) => (
-        <option
+        <MenuItem
           key={i}
-          value={value}>{label}
-        </option>
+          value={value}
+          primaryText={label}/>
       ))
   }
 
@@ -84,20 +86,19 @@ export default class Dropdown extends Component {
 
 
     return (
-
       <div className={`essential-select ${(submitted && !valid) ? 'errors' : ''}`}>
-        {label && <label>{label}</label>}
 
-        <select tabIndex="0"
-                value={this.state.value}
-                onChange={this.handleChange.bind(this)}
-                className={`${placeholder && !touched && 'placeholder'}`}
-                name={name} id={name}>
+        <SelectField
+          tabIndex="0"
+          floatingLabelText={placeholder}
+          value={this.state.value}
+          onChange={this.handleChange.bind(this)}
+          id={name}
+          name={name}>
 
-          {!touched && placeholder && <option value="">{placeholder}</option>}
           {this.generateOptions()}
 
-        </select>
+        </SelectField>
         <div className="icons">
           { submitted && !valid && <Icon type="error"/> }
           { required && valid && <Icon type="check"/> }

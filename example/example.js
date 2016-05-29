@@ -14,6 +14,11 @@ const dummyHandler = function (payload) {
   alert(JSON.stringify(payload))
 };
 
+const dummyErrors = {
+//   example of error
+//   ultimateValidation: 'Hey error here!'
+};
+
 const demoOptions = [
   {value: '1', label: 'One'},
   {value: '2', label: 'Two'},
@@ -44,7 +49,7 @@ const Example = () => (
     <br/>
     <br/>
 
-    <ValidForm debug={true} onSubmit={dummyHandler}>
+    <ValidForm errors={dummyErrors} debug={true} onSubmit={dummyHandler}>
       <Field placeholder="placeholder" required={true} validator="isLength:1:5|isAlpha|contains:test" name="ultimateValidation" label="Is 1-5 letters only, must contain 'test'"/>
       <Toggle required={true} name="toggle" label="This has to be checked as well"/>
       <RaisedButton type="submit">Submit</RaisedButton>

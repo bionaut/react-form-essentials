@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import TextField from 'material-ui/TextField';
 import useValidator from '../../utils/useValidator';
 
+import getInputStyles from '../common/styles';
 import Icon from '../Icon/Icon';
 
 export default class Field extends Component {
@@ -46,14 +47,6 @@ export default class Field extends Component {
     });
     const valid = this.validate(newValue);
     this.update(valid);
-  }
-
-  getUnderlineStyles(submitted, errors, name, valid){
-    if ((errors && errors[name]) || (submitted && !valid)){
-      return {
-        borderColor: 'red'
-      }
-    }
   }
 
   validate(newValue = this.state.value) {
@@ -101,12 +94,12 @@ export default class Field extends Component {
     if (this.approve()) {
       return (
         <div className="essential-field">
-          {label && <label>{label}</label>}
           <div className={`essential-input-group`}>
             <TextField
-              underlineStyle={this.getUnderlineStyles(submitted, errors, name, valid)}
-              underlineFocusStyle={this.getUnderlineStyles(submitted, errors, name, valid)}
-              style={inputStyle}
+              floatingLabelText={label}
+              underlineStyle={getInputStyles(submitted, errors, name, valid)}
+              underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
+              style={getInputStyles(submitted, errors, name, valid)}
               errorText={errors && errors[name]}
               name={name}
               id={name}
@@ -119,11 +112,6 @@ export default class Field extends Component {
             { (validator || required) && valid && <Icon type="check"/> }
             { !required && !validator && <Icon type="optional"/> }
           </div>
-          { errors && errors[name] &&
-          <span>
-            <i className="orange icon"></i>
-            <span className="secondary-error">{errors[name]}</span>
-          </span>}
         </div>
       );
     } else {
