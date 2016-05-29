@@ -108,9 +108,11 @@ export default class Field extends Component {
               onChange={this.handleChange.bind(this)}
               hintText={placeholder}
             />
-            { submitted && !valid && <Icon type="error"/> }
-            { (validator || required) && valid && <Icon type="check"/> }
-            { !required && !validator && <Icon type="optional"/> }
+            <div className="icons">
+              { submitted && !valid && <Icon type="error"/> }
+              { (validator || required) && valid && <Icon type="check"/> }
+              { !required && !validator && <Icon type="optional"/> }
+            </div>
           </div>
         </div>
       );

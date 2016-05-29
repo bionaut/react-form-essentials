@@ -5,6 +5,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 import Icon from '../Icon/Icon';
+import getStyles from '../common/styles';
 
 export default class Dropdown extends Component {
   constructor(props) {
@@ -68,11 +69,11 @@ export default class Dropdown extends Component {
   render() {
 
     const {
-      submitted
+      submitted,
+      errors
     } =this.context;
 
     const {
-      label,
       placeholder,
       required,
       validator,
@@ -80,8 +81,7 @@ export default class Dropdown extends Component {
     } = this.props;
 
     const {
-      valid,
-      touched
+      valid
     } = this.state;
 
 
@@ -91,6 +91,8 @@ export default class Dropdown extends Component {
         <SelectField
           tabIndex="0"
           floatingLabelText={placeholder}
+          style={getStyles(submitted, errors, name, valid)}
+          underlineStyle={getStyles(submitted, errors, name, valid)}
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
           id={name}
