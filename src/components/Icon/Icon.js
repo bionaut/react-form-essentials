@@ -13,6 +13,8 @@ const optionalIcon = <svg style={style}><path fill="#000000" d="M11,9H13V7H11M12
 
 const Icon = ({type}) => {
 
+  const classNames = `essential-icon ${type}`;
+
   let body;
 
   switch (type){
@@ -22,12 +24,13 @@ const Icon = ({type}) => {
     case 'check':
       body = checkIcon;
       break;
+    case 'optional':
     default:
       body = optionalIcon;
   }
 
   return (
-    <div className="essential-icon">
+    <div className={classNames}>
       {body}
     </div>
   );

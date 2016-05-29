@@ -99,9 +99,9 @@ export default class Dropdown extends Component {
 
         </select>
         <div className="icons">
-          { submitted && !valid && <Icon className="red" type="error"/> }
-          { required && valid && <Icon className="green" type="check"/> }
-          { (!required && !validator) && <Icon className="blue"/> }
+          { submitted && !valid && <Icon type="error"/> }
+          { required && valid && <Icon type="check"/> }
+          { (!required && !validator) && <Icon type="optional"/> }
         </div>
       </div>
     );
