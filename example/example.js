@@ -29,11 +29,11 @@ const demoOptions = [
 const Example = () => (
   <div>
 
-    <h1><u>Form</u> syntax.</h1>
+    <h1><u>Form</u> syntax</h1>
 
     <pre>
       {
-        `<ValidForm debug={true} onSubmit={dummyHandler}>
+        `<ValidForm errors={errorsObject} debug={true} onSubmit={dummyHandler}>
         <!--children here-->
 </ValidForm>`
       }
@@ -41,8 +41,31 @@ const Example = () => (
 
     <ul>
       <li><b>debug:</b> will provide form feedback</li>
+      <li><b>errors:</b> send errors object available for all child components</li>
       <li><b>onSubmit:</b> is a submit handler (use from outside container)</li>
     </ul>
+
+    <h1><u>Field</u> syntax</h1>
+    <pre>
+      {
+        `<Field name="someName"
+       placeholder="HintText"
+       required={true}
+       validator={isLength:2}
+       icons={false}
+       label="Some label">
+</Field>`
+      }
+    </pre>
+
+    <ul>
+      <li><b>name:</b> input name</li>
+      <li><b>placeholder:</b> hint text for input</li>
+      <li><b>validator:</b> isLength:1:5|isAlpha|contains:test </li>
+      <li><b>icons:</b> show/hide icons (default: true)</li>
+      <li><b>label:</b> input label </li>
+    </ul>
+
 
     <hr/>
     <br/>
