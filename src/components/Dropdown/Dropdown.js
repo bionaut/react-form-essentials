@@ -66,7 +66,7 @@ export default class Dropdown extends Component {
   render() {
 
     const {
-      submitted
+      submitted, errors
     } =this.context;
 
     const {
@@ -74,7 +74,8 @@ export default class Dropdown extends Component {
       placeholder,
       required,
       validator,
-      name
+      name,
+      defaultError
     } = this.props;
 
     const {
@@ -103,6 +104,14 @@ export default class Dropdown extends Component {
           { required && valid && <Icon type="check"/> }
           { (!required && !validator) && <Icon type="optional"/> }
         </div>
+
+        {(submitted && !valid && defaultError) || (errors && errors[name]) &&
+        <span>
+          <i className="orange icon"></i>
+          <span className="secondary-error">{(submitted && !valid && defaultError) || (errors && errors[name])}</span>
+        </span>
+        }
+
       </div>
     );
   }

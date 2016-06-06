@@ -80,7 +80,8 @@ export default class Field extends Component {
       type='text',
       required,
       validator,
-      name='untitled'
+      name='untitled',
+      defaultError
     } = this.props;
 
     const {
@@ -106,10 +107,10 @@ export default class Field extends Component {
             { (validator || required) && valid && <Icon type="check"/> }
             { !required && !validator && <Icon type="optional"/> }
           </div>
-          { errors && errors[name] &&
+          {(submitted && !valid && defaultError) || (errors && errors[name]) &&
           <span>
             <i className="orange icon"></i>
-            <span className="secondary-error">{errors[name]}</span>
+            <span className="secondary-error">{(submitted && !valid && defaultError) || (errors && errors[name])}</span>
           </span>}
         </div>
       );
