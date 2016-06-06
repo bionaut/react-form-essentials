@@ -22,11 +22,11 @@ describe('Dropdown', () => {
     );
 
     expect(wrapper).to.have.className('essential-select');
-    expect(wrapper).to.have.descendants('select');
+    expect(wrapper).to.have.descendants('SelectField');
 
   });
 
-  it('should have error when required', () => {
+  it('should have error when empty and required', () => {
     const wrapper = mount(
       <Dropdown
         name="dropdown"
@@ -42,7 +42,7 @@ describe('Dropdown', () => {
       }
     );
 
-    expect(wrapper.find('i')).to.have.className('red');
+    expect(wrapper.find('.red'));
 
   });
 
@@ -63,8 +63,8 @@ describe('Dropdown', () => {
       }
     );
 
-    expect(wrapper.find('select')).to.have.value('1');
-    expect(wrapper.find('i')).to.have.className('green');
+    expect(wrapper).to.have.state('value', '1');
+    expect(wrapper.find('.green'));
 
   });
 
@@ -86,8 +86,8 @@ describe('Dropdown', () => {
       }
     );
 
-    expect(wrapper.find('select')).to.have.value('2');
-    expect(wrapper.find('i')).to.have.className('red');
+    expect(wrapper).to.have.state('value', '2');
+    expect(wrapper.find('.red'));
 
   })
 });

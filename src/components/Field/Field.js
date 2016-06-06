@@ -5,6 +5,9 @@ import useValidator from '../../utils/useValidator';
 import getInputStyles from '../common/styles';
 import Icon from '../Icon/Icon';
 
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 export default class Field extends Component {
   constructor(props) {
     super(props);
@@ -97,19 +100,21 @@ export default class Field extends Component {
       return (
         <div className="essential-field">
           <div className={`essential-input-group`}>
-            <TextField
-              floatingLabelText={label}
-              underlineStyle={getInputStyles(submitted, errors, name, valid)}
-              underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
-              style={getInputStyles(submitted, errors, name, valid)}
-              errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
-              name={name}
-              id={name}
-              type={type}
-              value={value}
-              onChange={this.handleChange.bind(this)}
-              hintText={placeholder}
-            />
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
+              <TextField
+                floatingLabelText={label}
+                underlineStyle={getInputStyles(submitted, errors, name, valid)}
+                underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
+                style={getInputStyles(submitted, errors, name, valid)}
+                errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
+                name={name}
+                id={name}
+                type={type}
+                value={value}
+                onChange={this.handleChange.bind(this)}
+                hintText={placeholder}
+              />
+            </MuiThemeProvider>
             {icons && <div className="icons">
               { submitted && !valid && <Icon type="error"/> }
               { (validator || required) && valid && <Icon type="check"/> }

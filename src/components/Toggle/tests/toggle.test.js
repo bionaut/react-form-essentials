@@ -10,7 +10,12 @@ import Toggle from '../Toggle';
 
 describe('Toggle Component', () => {
   it('should render', () => {
-    const wrapper = shallow(<Toggle name="testField" label="Accept" />);
+    const wrapper = mount(<Toggle name="testField" label="Accept"/>,
+      {
+        context: {
+          updatePayload: () => null
+        }
+      });
 
     expect(wrapper).to.have.className('essential-toggle');
     expect(wrapper).to.have.descendants('.checkbox');
@@ -18,7 +23,7 @@ describe('Toggle Component', () => {
     expect(wrapper.find('label')).to.have.text('Accept');
     expect(wrapper.find('input')).to.have.attr('id').equal('testField');
     expect(wrapper.find('input')).to.not.be.checked();
-    expect(wrapper.find('input')).to.be.value("");
+    expect(wrapper.find('input')).to.be.value('false');
     expect(wrapper.find('.checkbox')).to.not.have.className('checked');
     expect(wrapper.find('input')).to.have.attr('name').equal('testField');
 
@@ -36,7 +41,7 @@ describe('Toggle Component', () => {
 
     expect(wrapper.find('input')).to.not.be.checked();
     expect(wrapper).to.have.className('error');
-    expect(wrapper.find('input')).to.be.value("");
+    expect(wrapper.find('input')).to.be.value('false');
     expect(wrapper.find('.checkbox')).to.not.have.className('checked')
 
 
@@ -53,7 +58,7 @@ describe('Toggle Component', () => {
     );
 
     expect(wrapper).to.not.have.className('error');
-    expect(wrapper.find('input')).to.be.value("");
+    expect(wrapper.find('input')).to.be.value('false');
     expect(wrapper.find('.checkbox')).to.not.have.className('checked');
 
   });
@@ -68,7 +73,7 @@ describe('Toggle Component', () => {
       }
     );
     expect(wrapper.find('input')).to.be.checked();
-    expect(wrapper.find('input')).to.be.value("true");
+    expect(wrapper.find('input')).to.be.value('true');
     expect(wrapper.find('.checkbox')).to.have.className('checked');
   });
 

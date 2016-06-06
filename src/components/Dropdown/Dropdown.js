@@ -7,6 +7,9 @@ import MenuItem from 'material-ui/MenuItem';
 import Icon from '../Icon/Icon';
 import getStyles from '../common/styles';
 
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 export default class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -89,21 +92,22 @@ export default class Dropdown extends Component {
 
     return (
       <div className={`essential-select ${(submitted && !valid) ? 'errors' : ''}`}>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <SelectField
+            tabIndex="0"
+            floatingLabelText={placeholder}
+            style={getStyles(submitted, errors, name, valid)}
+            underlineStyle={getStyles(submitted, errors, name, valid)}
+            value={this.state.value}
+            onChange={this.handleChange.bind(this)}
+            id={name}
+            errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
+            name={name}>
 
-        <SelectField
-          tabIndex="0"
-          floatingLabelText={placeholder}
-          style={getStyles(submitted, errors, name, valid)}
-          underlineStyle={getStyles(submitted, errors, name, valid)}
-          value={this.state.value}
-          onChange={this.handleChange.bind(this)}
-          id={name}
-          errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
-          name={name}>
+            {this.generateOptions()}
 
-          {this.generateOptions()}
-
-        </SelectField>
+          </SelectField>
+        </MuiThemeProvider>
         {icons && <div className="icons">
           { submitted && !valid && <Icon type="error"/> }
           { required && valid && <Icon type="check"/> }

@@ -9,7 +9,7 @@ import Field from '../Field';
 
 describe('Field component', () => {
   it('should render', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Field
         name="testField"
         type="number"
@@ -27,15 +27,19 @@ describe('Field component', () => {
     expect(wrapper.find('label')).to.have.text('Name');
     expect(wrapper.find('input')).to.have.attr('id').equal('testField');
     expect(wrapper.find('input')).to.have.attr('name').equal('testField');
-    expect(wrapper.find('input')).to.have.attr('placeholder').equal('testPlaceholder');
-
   });
 
   it('Should display optional icon', () => {
-    const wrapper = shallow(
-      <Field name="optional"/>);
-    expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('blue');
+    const wrapper = mount(
+      <Field name="optional"/>,
+      {
+        context: {
+          updatePayload: () => null
+        }
+      }
+    );
+    expect(wrapper).to.have.descendants('svg');
+    expect(wrapper.find('svg')).to.have.className('blue');
 
   });
 
@@ -49,8 +53,8 @@ describe('Field component', () => {
           submitted: true
         }
       });
-    expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('red');
+    expect(wrapper).to.have.descendants('svg');
+    expect(wrapper.find('svg')).to.have.className('red');
 
   });
 
@@ -65,8 +69,8 @@ describe('Field component', () => {
           submitted: true
         }
       });
-    expect(wrapper).to.have.descendants('i');
-    expect(wrapper.find('i')).to.have.className('green');
+    expect(wrapper).to.have.descendants('svg');
+    expect(wrapper.find('svg')).to.have.className('green');
 
   });
 

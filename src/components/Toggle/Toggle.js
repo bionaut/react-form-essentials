@@ -2,6 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import useValidator from '../../utils/useValidator';
 import Checkbox from 'material-ui/Checkbox';
 
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import getStyles from '../common/styles';
 
 export default class Toggle extends Component {
@@ -77,13 +80,15 @@ export default class Toggle extends Component {
         onClick={this.handleToggle.bind(this)}
         className={`essential-toggle ${(submitted && !valid) ? 'error' : ''}`}>
         <div className={`checkbox ${value && 'checked'}`}>
-          <Checkbox
-            label={label}
-            checked={value ? true:false}
-            value={value ? 'true':'false'}
-            labelStyle={getStyles(submitted, errors, name, valid)}
-            name={name}
-            id={name}/>
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <Checkbox
+              label={label}
+              checked={value ? true:false}
+              value={value ? 'true':'false'}
+              labelStyle={getStyles(submitted, errors, name, valid)}
+              name={name}
+              id={name}/>
+          </MuiThemeProvider>
         </div>
       </div>
     );
