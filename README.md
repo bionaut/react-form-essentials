@@ -1,5 +1,54 @@
-"DOCS IN PROGRESS"
+"WORK & DOCS IN PROGRESS"
 ----------------
+
+About this release: 
+
+- Because it has **material-ui** wrapped around it, you have to initialize 'react-tap-event-plugin' (see below) 
+- At this point only works with webpack and babel(es6).
+- For more info check GITHUB!!
+
+
+There are two branches:
+
+**develop**
+
+ - where core is developed
+ - no extra styles
+
+**material-ui**
+
+ - this branch comes from develop but has material-ui around it
+ - so when you use material design components you can use them with validations
+
+-----------------------------------
+
+**STYLES**
+==========
+
+ - only few basic styles    
+ - styles are written in .styl(stylus)
+ - there is also compiled version styles.css
+
+If you're using webpack just add this [stylus-loader](https://github.com/shama/stylus-loader) for stylus and you should be good.
+
+
+-----------------------------------
+
+**SET UP**
+==========
+
+1. initialize material-ui
+    
+    `import {init} from 'react-form-essentials';` 
+    
+    `init();`
+    
+    
+2. load components and use them as shown below
+    
+    `import {ValidForm, Field} from 'react-form-essentials';`
+
+-----------------------------------
 
 **Form syntax**
 ===================
@@ -12,7 +61,7 @@
 
 
  - **debug**: will provide form feedback
- - **errors**: send errors object available for all child components
+ - **errors**: send errors object available for all child components ( if this object has property with the name of child component, the value will be displayed as error for that component - this is good when checking errors asynchronously in "container components")
  - **onSubmit**: is a submit handler (use from outside container)
 
 ---------------------
@@ -21,6 +70,7 @@
 ===================
 
     <Field name="someName"
+       type="text"
        placeholder="HintText"
        required={true}
        validator={isLength:2}
@@ -29,10 +79,22 @@
 	</Field>
 
  - **name**: input name
+ - **type**: input type
  - **placeholder**: hint text for input
  - **validator**: isLength:1:5|isAlpha|contains:test
  - **icons**: show/hide icons (default: true)
  - **label**: input label
+ - **defaultError**: default error message when field is invalid
+
+**Dropdown syntax**
+===================
+**TODO**
+
+
+**Toggle syntax**
+===================
+**TODO**
+
 
 -----------------------------------
 

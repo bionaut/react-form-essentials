@@ -1,14 +1,14 @@
 {
   "name": "react-form-essentials",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "React form components with validations",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bionaut/react-form-essentials/"
   },
   "scripts": {
-    "prepublish": "rm -rf dist && mkdir dist && cp -r src/* dist",
+    "prepublish": "rm -rf dist && mkdir dist && cp -r src/* dist && ./node_modules/stylus/bin/stylus -c src/index.styl --out dist/styles.css",
     "start": "webpack-dev-server",
     "test": "mocha .scripts/mocha_boot.js src/**/tests/**/*.js --require babelhook --require css-null-compiler",
     "test-watch": "npm run test -- --watch --watch-extensions js"
