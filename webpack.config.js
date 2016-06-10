@@ -1,13 +1,20 @@
 module.exports = {
-  entry: './example/example.js',
+  entry: './src/index.js',
   output: {
-    filename: 'bundle.js'
+    filename: './dist/index.js'
+  },
+  externals: {
+    "react": "react",
+    "react-dom": "react-dom",
+    "material-ui": "material-ui",
+    "react-tap-event-plugin": "react-tap-event-plugin"
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel'
+        loader: 'babel',
+        exclude: /node_modules/
       },
       {
         test: /\.styl$/,
