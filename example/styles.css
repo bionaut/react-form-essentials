@@ -1,0 +1,68 @@
+.essential-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.essential-icon.error path {
+    fill: #f00
+}
+
+.essential-icon.check path {
+    fill: #008000
+}
+
+.essential-icon.optional path {
+    fill: #00f
+}
+
+.essential-select {
+    position: relative;
+    width: 100%
+}
+
+.essential-field {
+    position: relative;
+    width: 100%;
+}
+
+.essential-field .essential-input-group {
+    position: relative;
+}
+
+.essential-field .essential-input-group input {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px
+}
+
+.essential-field .essential-input-group.error input {
+    outline: 1px solid #f00
+}
+
+.essential-field .secondary-error {
+    color: #f00
+}
+
+.essential-toggle {
+    margin: 15px 0;
+}
+
+.essential-toggle.error {
+    color: #f00
+}
+
+.essential-form-debug {
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffe5c2;
+    margin-top: 20px;
+}
+
+.essential-form-debug.valid {
+    background-color: #93db9a
+}

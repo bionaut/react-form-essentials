@@ -1,12 +1,12 @@
 "WORK & DOCS IN PROGRESS"
-----------------
+------------------------
+
+**FOR TESTING ONLY - WAIT for production release.**
 
 About this release: 
 
-- Because it has **material-ui** wrapped around it, you have to initialize 'react-tap-event-plugin' (see below) 
-- At this point only works with webpack and babel(es6).
-- For more info check GITHUB!!
-
+- Because it has **material-ui** wrapped around it, you have to initialize 'react-tap-event-plugin' (see below how) 
+- For more info check GITHUB **(example folder)**
 
 There are two branches:
 
@@ -27,10 +27,7 @@ There are two branches:
 
  - only few basic styles    
  - styles are written in .styl(stylus)
- - there is also compiled version styles.css
-
-If you're using webpack just add this [stylus-loader](https://github.com/shama/stylus-loader) for stylus and you should be good.
-
+ - there is also compiled version **styles.css** so include it in your app
 
 -----------------------------------
 

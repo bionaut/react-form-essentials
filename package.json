@@ -1,6 +1,6 @@
 {
   "name": "react-form-essentials",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "React form components with validations",
   "main": "dist/index.js",
   "repository": {
@@ -8,12 +8,12 @@
     "url": "https://github.com/bionaut/react-form-essentials/"
   },
   "scripts": {
-    "prepublish": "rm -rf dist && mkdir dist && ./node_modules/stylus/bin/stylus -c src/index.styl --out dist/styles.css && webpack",
-    "start": "webpack-dev-server",
+    "prepublish": "rm -rf dist && mkdir dist && ./node_modules/stylus/bin/stylus -c src/index.styl --out dist/styles.css && babel ./src --out-dir ./dist",
+    "start": "webpack-dev-server --config webpack.app.dev.js --progress",
     "test": "mocha .scripts/mocha_boot.js src/**/tests/**/*.js --require babelhook --require css-null-compiler",
     "test-watch": "npm run test -- --watch --watch-extensions js"
   },
-  "files":[
+  "files": [
     "dist"
   ],
   "keywords": [
@@ -29,17 +29,18 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.4.2",
+    "copyfiles": "^0.2.1",
     "css-loader": "^0.23.1",
     "enzyme": "^2.2.0",
     "mocha": "^2.4.5",
+    "mocha-stylus-compiler": "^1.0.1",
     "react-addons-test-utils": "^15.0.2",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.0.0",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1",
-    "mocha-stylus-compiler": "^1.0.1"
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "material-ui": "^0.15.0",

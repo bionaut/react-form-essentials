@@ -1,13 +1,7 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: './example/example.js',
   output: {
-    filename: './dist/index.js'
-  },
-  externals: {
-    "React": "react",
-    "react-dom": "react-dom",
-    "material-ui": "material-ui",
-    "react-tap-event-plugin": "react-tap-event-plugin"
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -21,5 +15,11 @@ module.exports = {
         loader: 'style-loader!css-loader!stylus-loader'
       }
     ]
+  },
+  devServer: {
+    port: 3000,
+    contentBase: './example',
+    inline: true,
+    progress: true
   }
 };
