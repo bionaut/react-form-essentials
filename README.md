@@ -34,14 +34,19 @@ There are two branches:
 **SET UP**
 ==========
 
-1. initialize material-ui
+1. install
+    
+    `npm i react-form-essentials material-ui -S` 
+    
+
+2. initialize material-ui
     
     `import {init} from 'react-form-essentials';` 
     
     `init();`
     
     
-2. load components and use them as shown below
+3. load components and use them as shown below
     
     `import {ValidForm, Field} from 'react-form-essentials';`
 
