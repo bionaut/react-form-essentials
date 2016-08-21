@@ -44,12 +44,17 @@ export default class Field extends Component {
   }
 
   handleChange(ev) {
+    const {onChange} = this.props;
     const newValue = ev.target.value;
     this.setState({
       value: newValue
     });
     const valid = this.validate(newValue);
     this.update(valid);
+
+    if (onChange && valid) {
+      onChange(ev);
+    }
   }
 
   validate(newValue = this.state.value) {
@@ -82,11 +87,11 @@ export default class Field extends Component {
     const {
       label,
       placeholder,
-      type='text',
+      type = 'text',
       required,
       validator,
-      name='untitled',
-      icons=true,
+      name = 'untitled',
+      icons = true,
       defaultError
     } = this.props;
 
