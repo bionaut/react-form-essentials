@@ -11,7 +11,7 @@ import {init, ValidForm, Field, Toggle, Dropdown} from '../dist/index';
 init();
 
 const dummyHandler = function (payload) {
-  alert(JSON.stringify(payload))
+  console.log(payload);
 };
 
 const dummyErrors = {
@@ -42,7 +42,7 @@ const Example = () => (
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
       <Field name="optionalField" label="Optional Field"/>
-      <Field defaultError="This field is required!" required={true} name="requiredField" label="Required Field"/>
+      <Field debounce={1000} onChange={dummyHandler} defaultError="This field is required!" required={true} name="requiredField" label="Required Field"/>
       <Dropdown defaultError="This field is required!" required={true} placeholder="Choose Number" label="choose" name="dropdown" options={demoOptions}/>
       <br/>
       <RaisedButton type="submit">Submit</RaisedButton>

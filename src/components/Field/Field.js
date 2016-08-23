@@ -44,16 +44,36 @@ export default class Field extends Component {
   }
 
   handleChange(ev) {
-    const {onChange} = this.props;
+    ev.persist();
+    const {onChange, debounce} = this.props;
     const newValue = ev.target.value;
     this.setState({
       value: newValue
     });
     const valid = this.validate(newValue);
+    const isEmpty = newValue === '';
     this.update(valid);
 
-    if (onChange && valid) {
-      onChange(ev);
+    if (onChange && (valid || isEmpty)) {
+      if (debounce) {
+
+        const {timeout} = this.state;
+
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        const newTimeout = setTimeout(() => {
+          onChange(ev);
+        }, debounce);
+
+        this.setState({
+          timeout: newTimeout
+        });
+
+      } else {
+        onChange(ev);
+      }
     }
   }
 
