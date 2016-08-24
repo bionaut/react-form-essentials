@@ -112,7 +112,8 @@ export default class Field extends Component {
       validator,
       name = 'untitled',
       icons = true,
-      defaultError
+      defaultError,
+      multiLine
     } = this.props;
 
     const {
@@ -136,6 +137,7 @@ export default class Field extends Component {
                 id={name}
                 type={type}
                 value={value}
+                multiLine={multiLine}
                 onChange={this.handleChange.bind(this)}
                 hintText={placeholder}
               />

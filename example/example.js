@@ -41,7 +41,7 @@ const Example = () => (
     <br/>
 
     <ValidForm debug={true} onSubmit={dummyHandler}>
-      <Field name="optionalField" label="Optional Field"/>
+      <Field multiLine={true} name="optionalField" label="Optional Field"/>
       <Field debounce={1000} onChange={dummyHandler} defaultError="This field is required!" required={true} name="requiredField" label="Required Field"/>
       <Dropdown defaultError="This field is required!" required={true} placeholder="Choose Number" label="choose" name="dropdown" options={demoOptions}/>
       <br/>
