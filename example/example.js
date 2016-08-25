@@ -15,9 +15,10 @@ const dummyHandler = function (payload) {
 };
 
 const dummyErrors = {
-//   example of error
-//   ultimateValidation: 'Hey error here!'
+  ultimateValidation: 'Hey error here!'
 };
+
+const dummyError = 'Critical error!! Invalid';
 
 const demoOptions = [
   {value: '1', label: 'One'},

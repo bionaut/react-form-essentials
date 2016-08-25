@@ -17,24 +17,8 @@ export default class Field extends Component {
   }
 
   componentDidMount() {
-    this.init();
-  }
-
-  init() {
-    if (this.approve()) {
-      const valid = this.validate();
-      this.update(valid);
-    }
-  }
-
-  approve() {
-    const {payload} = this.context;
-    const {show} = this.props;
-
-    if (show) {
-      return !!(payload && payload[show]);
-    }
-    return true;
+    const valid = this.validate();
+    this.update(valid);
   }
 
   update(value) {
@@ -45,7 +29,7 @@ export default class Field extends Component {
 
   handleChange(ev) {
     ev.persist();
-    const {onChange, debounce} = this.props;
+    const {onChange, debounce, error} = this.props;
     const newValue = ev.target.value;
     this.setState({
       value: newValue
@@ -54,7 +38,7 @@ export default class Field extends Component {
     const isEmpty = newValue === '';
     this.update(valid);
 
-    if (onChange && (valid || isEmpty)) {
+    if (onChange && (valid || isEmpty || error)) {
       if (debounce) {
 
         const {timeout} = this.state;
@@ -80,13 +64,22 @@ export default class Field extends Component {
   validate(newValue = this.state.value) {
     let valid;
 
-    if (this.props.validator) {
-      valid = useValidator(this.props.validator, newValue);
+    const {required, validator, error} = this.props;
+
+    if (error){
+      this.setState({
+        valid: false
+      });
+      return false;
+    }
+
+    if (validator) {
+      valid = useValidator(validator, newValue);
       this.setState({
         valid
       })
     } else {
-      valid = (this.props.required)
+      valid = (required)
         ? newValue && newValue.length > 0
         : true;
       this.setState({
@@ -106,6 +99,7 @@ export default class Field extends Component {
 
     const {
       label,
+      error,
       placeholder,
       type = 'text',
       required,
@@ -122,38 +116,33 @@ export default class Field extends Component {
     } = this.state;
 
 
-    if (this.approve()) {
-      return (
-        <div className="essential-field">
-          <div className={`essential-input-group`}>
-            <MuiThemeProvider muiTheme={getMuiTheme()}>
-              <TextField
-                floatingLabelText={label}
-                underlineStyle={getInputStyles(submitted, errors, name, valid)}
-                underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
-                style={getInputStyles(submitted, errors, name, valid)}
-                errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
-                name={name}
-                id={name}
-                type={type}
-                value={value}
-                multiLine={multiLine}
-                onChange={this.handleChange.bind(this)}
-                hintText={placeholder}
-              />
-            </MuiThemeProvider>
-            {icons && <div className="icons">
-              { submitted && !valid && <Icon type="error"/> }
-              { (validator || required) && valid && <Icon type="check"/> }
-              { !required && !validator && <Icon type="optional"/> }
-            </div>}
-          </div>
+    return (
+      <div className="essential-field">
+        <div className={`essential-input-group`}>
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <TextField
+              floatingLabelText={label}
+              underlineStyle={getInputStyles(submitted, errors, name, valid)}
+              underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
+              style={getInputStyles(submitted, errors, name, valid)}
+              errorText={error || (submitted && !valid && defaultError) || (errors && errors[name])}
+              name={name}
+              id={name}
+              type={type}
+              value={value}
+              multiLine={multiLine}
+              onChange={this.handleChange.bind(this)}
+              hintText={placeholder}
+            />
+          </MuiThemeProvider>
+          {icons && <div className="icons">
+            { submitted && !valid && <Icon type="error"/> }
+            { (validator || required) && valid && <Icon type="check"/> }
+            { !required && !validator && <Icon type="optional"/> }
+          </div>}
         </div>
-      );
-    } else {
-      return false;
-    }
-
+      </div>
+    );
   }
 }
 
