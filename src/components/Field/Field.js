@@ -29,7 +29,7 @@ export default class Field extends Component {
 
   handleChange(ev) {
     ev.persist();
-    const {onChange, debounce, error} = this.props;
+    const {onChange, debounce} = this.props;
     const newValue = ev.target.value;
     this.setState({
       value: newValue
@@ -38,7 +38,7 @@ export default class Field extends Component {
     const isEmpty = newValue === '';
     this.update(valid);
 
-    if (onChange && (valid || isEmpty || error)) {
+    if (onChange && (valid || isEmpty)) {
       if (debounce) {
 
         const {timeout} = this.state;
@@ -64,14 +64,7 @@ export default class Field extends Component {
   validate(newValue = this.state.value) {
     let valid;
 
-    const {required, validator, error} = this.props;
-
-    if (error){
-      this.setState({
-        valid: false
-      });
-      return false;
-    }
+    const {required, validator} = this.props;
 
     if (validator) {
       valid = useValidator(validator, newValue);
@@ -99,7 +92,6 @@ export default class Field extends Component {
 
     const {
       label,
-      error,
       placeholder,
       type = 'text',
       required,
@@ -125,7 +117,7 @@ export default class Field extends Component {
               underlineStyle={getInputStyles(submitted, errors, name, valid)}
               underlineFocusStyle={getInputStyles(submitted, errors, name, valid)}
               style={getInputStyles(submitted, errors, name, valid)}
-              errorText={error || (submitted && !valid && defaultError) || (errors && errors[name])}
+              errorText={(submitted && !valid && defaultError) || (errors && errors[name])}
               name={name}
               id={name}
               type={type}
