@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import equal from 'deep-equal';
 
 export default class ValidForm extends Component {
   constructor(props) {
@@ -7,8 +8,23 @@ export default class ValidForm extends Component {
       valid: false,
       submitted: false,
       payload: {},
-      errors: {}
-    };
+      errors: {},
+      lastInvalidPayload: {}
+    }
+  }
+
+  componentDidUpdate() {
+    const {errors} = this.props;
+    const {lastInvalidPayload, payload} = this.state;
+    const isError = errors && Object.keys(errors).length > 0;
+
+    if (isError && !equal(lastInvalidPayload, payload)){
+      this.setState({
+        lastInvalidPayload: payload,
+        valid: false
+      })
+    }
+
   }
 
   getChildContext() {

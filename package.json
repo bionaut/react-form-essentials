@@ -1,6 +1,6 @@
 {
   "name": "react-form-essentials",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "React form components with validations",
   "main": "dist/index.js",
   "repository": {
@@ -43,6 +43,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "material-ui": "^0.15.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
