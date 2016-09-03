@@ -24,7 +24,9 @@ export default class Field extends Component {
   update(value) {
     const {updatePayload} = this.context;
     const {name} = this.props;
-    updatePayload(name, value);
+    if (typeof updatePayload === "function"){
+      updatePayload(name, value);
+    }
   }
 
   handleChange(ev) {
@@ -99,7 +101,8 @@ export default class Field extends Component {
       name = 'untitled',
       icons = true,
       defaultError,
-      multiLine
+      multiLine,
+      className
     } = this.props;
 
     const {
@@ -109,7 +112,7 @@ export default class Field extends Component {
 
 
     return (
-      <div className="essential-field">
+      <div className={`essential-field ${className ? className : ''}`}>
         <div className={`essential-input-group`}>
           <MuiThemeProvider muiTheme={getMuiTheme()}>
             <TextField

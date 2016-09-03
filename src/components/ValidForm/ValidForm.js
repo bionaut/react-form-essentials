@@ -18,7 +18,7 @@ export default class ValidForm extends Component {
     const {lastInvalidPayload, payload} = this.state;
     const isError = errors && Object.keys(errors).length > 0;
 
-    if (isError && !equal(lastInvalidPayload, payload)){
+    if (isError && !equal(lastInvalidPayload, payload)) {
       this.setState({
         lastInvalidPayload: payload,
         valid: false
@@ -80,27 +80,19 @@ export default class ValidForm extends Component {
 
   render() {
 
-    const {debug, children} = this.props;
+    const {debug, children, className} = this.props;
     const {payload, valid, submitted} = this.state;
 
     return (
-      <form
-        onSubmit={this.handleSubmit.bind(this)}
-        className="essential-form">
+      <form onSubmit={this.handleSubmit.bind(this)} className={`essential-form ${className ? className : ''}`}>
 
         {children}
 
         { debug &&
         <div className={`essential-form-debug ${valid ? 'valid' : ''}`}>
-          <p>
-            {JSON.stringify(payload)}
-          </p>
-          <p>
-            {`Form is: ${valid ? 'valid' : 'invalid'}`}
-          </p>
-          <p>
-            {`Submit button was ${submitted ? 'pressed' : 'not pressed'}.`}
-          </p>
+          <p>{JSON.stringify(payload)}</p>
+          <p>{`Form is: ${valid ? 'valid' : 'invalid'}`}</p>
+          <p>{`Submit button was ${submitted ? 'pressed' : 'not pressed'}.`}</p>
         </div>}
 
       </form>

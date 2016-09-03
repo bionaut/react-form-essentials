@@ -1,6 +1,6 @@
 {
   "name": "react-form-essentials",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "React form components with validations",
   "main": "dist/index.js",
   "repository": {

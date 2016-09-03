@@ -82,7 +82,8 @@ export default class Dropdown extends Component {
       validator,
       name,
       icons=true,
-      defaultError
+      defaultError,
+      className
     } = this.props;
 
     const {
@@ -91,7 +92,7 @@ export default class Dropdown extends Component {
 
 
     return (
-      <div className={`essential-select ${(submitted && !valid) ? 'errors' : ''}`}>
+      <div className={`essential-select ${className ? className : ''} ${(submitted && !valid) ? 'errors' : ''}`}>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
           <SelectField
             tabIndex="0"
