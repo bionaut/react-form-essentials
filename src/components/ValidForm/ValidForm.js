@@ -73,7 +73,8 @@ export default class ValidForm extends Component {
     });
 
     if (valid) {
-      onSubmit(payload)
+      const extended_payload = Object.assign({}, payload, this.props.payload);
+      onSubmit(extended_payload)
     }
 
   }

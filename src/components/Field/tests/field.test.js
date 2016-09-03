@@ -44,7 +44,7 @@ describe('Field component', () => {
   });
 
   it('Should display error icon and be invalid', () => {
-    const wrapper = mount(
+      const wrapper = mount(
       <Field
         required={true}
         name="optional"/>, {

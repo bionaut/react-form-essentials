@@ -1,6 +1,6 @@
 export default function (submitted, errors, name, valid) {
 
-  let styles = {
+  const styles = {
       width: '100%'
   };
 

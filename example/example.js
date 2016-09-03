@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import {init, ValidForm, Field, Toggle, Dropdown} from '../dist/index';
+import Autocomplete from '../src/components/Autocomplete/Autocomplete';
 
 init();
 
@@ -26,11 +27,16 @@ const demoOptions = [
   {value: '3', label: 'Three'}
 ];
 
+const autocompleteOptions = [
+  'one', 'two', 'three'
+];
+
 
 const Example = () => (
   <div>
 
-    <ValidForm errors={dummyErrors} debug={true} onSubmit={dummyHandler}>
+    <ValidForm payload={{extended: 'extended_data'}} debug={true} onSubmit={dummyHandler}>
+      <Autocomplete validator="isLength:5" required={true} placeholder="placeholder" name="auto" options={autocompleteOptions}/>
       <Field placeholder="placeholder" required={true} validator="isLength:1:5|isAlpha|contains:test" name="ultimateValidation" label="Is 1-5 letters only, must contain 'test'"/>
       <Toggle required={true} name="toggle" label="This has to be checked as well"/>
       <RaisedButton type="submit">Submit</RaisedButton>
