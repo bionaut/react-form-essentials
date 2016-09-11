@@ -73,7 +73,7 @@ export default class ValidForm extends Component {
     });
 
     if (valid) {
-      const extended_payload = Object.assign({}, payload, this.props.payload);
+      const extended_payload = Object.assign({}, payload, this.props.external);
       onSubmit(extended_payload)
     }
 
@@ -81,11 +81,11 @@ export default class ValidForm extends Component {
 
   render() {
 
-    const {debug, children, className} = this.props;
+    const {external, errors, debug, children, className, ...other} = this.props;
     const {payload, valid, submitted} = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit.bind(this)} className={`essential-form ${className ? className : ''}`}>
+      <form {...other} onSubmit={this.handleSubmit.bind(this)} className={`essential-form ${className ? className : ''}`}>
 
         {children}
 
